@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>my chart.js chart</title>
+</head>
+<body>
+    <div class="container">
+<canvas id="myChart"></canvas></canvas>
+
+
+    </div>
+
+<script>
+    
+    let myChart = document.getElementById('myChart').getContext('2d');
+let massPopChart = new Chart(myChart, {
+type: 'bar',
+data:{
+    labels:['Any pet','Dogs', 'Cats', 'Indoor fish', 'Outdoor fish', 'Guinea Pigs','Rabbits','Reptiles','Domestic Fowl','Hamsters', 'Horses', 'Indoor Birds'],
+    datasets:[{
+        label: 'Pets',
+        data:[
+
+        
+        44,24,17,8,5,2,2,1.5,1,1,1,0],
+        backgroundColor:['lightblue'],
+        borderWidth:1,
+        borderColor:'white',
+        hoverBorderWidth:3,
+        hoverBorderColor: 'black',
+        
+      
+    
+     
+     
+        
+
+}]
+    },
+
+    
+options:{
+    scales: {
+            
+            yAxes: [{
+                gridLines:{
+        display: true
+    },
+    
+            ticks: {
+            
+                   min: 0,
+                   max: 60,
+                   callback: function(value){return value+ "%"}
+                },  
+                scaleLabel: {
+                   display: true,
+                   labelString: "% of Households with this Pet"
+                }
+								
+            }],
+            xAxes: [{
+                gridLines:{
+        display: false
+    },
+    
+              
+								
+            }]
+        },
+        
+        tooltips: {
+                
+            mode: 'label',
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        return data['datasets'][0]['data'][tooltipItem['index']] + '%';
+                    }
+                }
+            },
+    title:{
+        display:true,
+        text:'Pet Ownership in the UK',
+        fontSize:32
+    },
+    legend:false,
+    
+}
+
+
+});
+</script>
+</body>
+</html>
